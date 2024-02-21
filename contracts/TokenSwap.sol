@@ -21,11 +21,6 @@ contract TokenSwap {
         uint256 _amountTokenA,
         uint256 _amountTokenB
     ) external {
-        // require(
-        //     IERC20(TokenA).approve(address(this), _amountTokenA),
-        //     "Deposit Not Approved"
-        // );
-
         require(
             IERC20(TokenA).transferFrom(
                 msg.sender,
@@ -51,12 +46,12 @@ contract TokenSwap {
     }
 
     function SwapToken(uint256 _toAmount) external {
-        // require(
-        //     IERC20(TokenA).transferFrom(msg.sender, address(this), _toAmount),
-        //     "Unable to Swap Token"
-        // );
         require(
-            IERC20(TokenB).transferFrom(address(this), msg.sender, _toAmount),
+            IERC20(TokenA).transfer(address(this), _toAmount),
+            "Unable to Swap Token"
+        );
+        require(
+            IERC20(TokenB).transfer(msg.sender, _toAmount),
             "Unable to Swap Token"
         );
     }
