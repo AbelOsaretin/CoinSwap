@@ -8,9 +8,9 @@ contract TokenSwap {
     address TokenA;
     address TokenB;
 
-    mapping(address => uint256) ATokenDeposit;
+    mapping(address => uint256) public ATokenDeposit;
 
-    mapping(address => uint256) BTokenDeposit;
+    mapping(address => uint256) public BTokenDeposit;
 
     constructor(address _tokenA, address _tokenB) {
         TokenA = _tokenA;
@@ -37,8 +37,8 @@ contract TokenSwap {
             ),
             "Deposit Failed for TokenB"
         );
-        ATokenDeposit[TokenA] = _amountTokenA;
-        BTokenDeposit[TokenB] = _amountTokenB;
+        ATokenDeposit[msg.sender] = _amountTokenA;
+        BTokenDeposit[msg.sender] = _amountTokenB;
     }
 
     function ViewApproval() external view returns (uint256) {
@@ -46,13 +46,18 @@ contract TokenSwap {
     }
 
     function SwapToken(uint256 _toAmount) external {
-        require(
-            IERC20(TokenA).transfer(address(this), _toAmount),
-            "Unable to Swap Token"
-        );
-        require(
-            IERC20(TokenB).transfer(msg.sender, _toAmount),
-            "Unable to Swap Token"
-        );
+        require(swap(_toAmount), "Unable to Swap Token");
+    }
+
+    function swap(uint256 _value) internal returns (bool) {
+        require(msg.sender != address(0x0), "Wrong EOA");
+
+        ATokenDeposit[msg.sender] = ATokenDeposit[msg.sender] - _value;
+
+        BTokenDeposit[msg.sender] = BTokenDeposit[msg.sender] + _value;
+        //(success, _to.call{value:_value}(""));
+        //_to.transfer(_value);
+        // Event
+        return true;
     }
 }

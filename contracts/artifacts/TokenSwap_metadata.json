@@ -24,6 +24,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "ATokenDeposit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "_amountTokenA",
 						"type": "uint256"
@@ -37,6 +56,25 @@
 				"name": "AddLiquidity",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "BTokenDeposit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -102,11 +140,11 @@
 			]
 		},
 		"contracts/TokenSwap.sol": {
-			"keccak256": "0xeba62c87e225b9d85ca3a34fd90fd1621da9923fc6c9d9da580b98a9f7734ac5",
+			"keccak256": "0xe40495b32a3b6de3636e203afda7112bc817ccc210f6d03b0742bff1015f1b8c",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://79bdf1510cac1fbf1f773c0b0c9a59e615f5d468d7f72ee5c6b6503623de8d61",
-				"dweb:/ipfs/QmYhmuuShsANKnhegGyfooEQLPj5WFjg1uWbsBrPaBTCHZ"
+				"bzz-raw://b85b4f5fbbd2cf428d0129df7ac98c020b953665996cf7a64415f3209d100b08",
+				"dweb:/ipfs/Qma73A2zyhLp4rQqjwE8Ychpsygmjd2UwMwhR6uoos4Lck"
 			]
 		},
 		"hardhat/console.sol": {
